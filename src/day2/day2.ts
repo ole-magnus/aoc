@@ -27,13 +27,11 @@ const part1 = (lines: string[]) => {
 };
 
 const part2 = (lines: string[]) => {
- 
   const { x, y } = lines.reduce<{ aim:number; x: number, y: number }>((acc, curr) => {
     const mov: Movement = movement(curr);
     const aim = mov.direction === 'y' ? (acc.aim + mov.value) : acc.aim;
     const x = mov.direction === 'x' ? (acc.x + mov.value) : acc.x;
     const y = mov.direction === 'x' ? (acc.y + (aim*mov.value)) : acc.y;
-    console.log({ aim, x, y});
     return { aim: aim, x: x, y: y}
   }, { aim:0,x:0,y:0 });
 
@@ -46,6 +44,6 @@ const part2 = (lines: string[]) => {
     .split('\n');
 
   console.log(part1(lines));
-  console.log(part2(lines.slice(0,10)));
+  console.log(part2(lines));
 
 })();
